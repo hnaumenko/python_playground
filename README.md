@@ -31,4 +31,6 @@ git push
 
 После этого отправить свои изменения.
 
+![](https://i.imgur.com/wf2rnnc.png)
+
 [Приложение](https://desktop.github.com) для работы с GitHub
