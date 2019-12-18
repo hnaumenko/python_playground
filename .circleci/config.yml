@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/python_playground
+    docker:
+      - image: circleci/python:3.6.4 # every job must define an image for the docker executor and subsequent jobs may define a different image.
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+    steps:
+      - checkout  # checkout source code to working directory
+      - run: # test what branch we're on.
+            name: "What branch am I on?"
+            command: echo ${CIRCLE_BRANCH}
+      - run:
+          command: |
+            sudo pip install pipenv
+            pipenv install
+      - run:
+          name: Check Homework
+          command: |
+            pipenv run python ./Muravetskiy/cli_animation.py

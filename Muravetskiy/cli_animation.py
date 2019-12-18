@@ -1,5 +1,8 @@
 import subprocess
 import time
+import os
+
+CI = os.environ.get('CI')
 
 canvas = [
   "\r\n",
@@ -9,7 +12,7 @@ canvas = [
   "       =================\r\n",
   "         []. \"\"\"\"\" .[]\r\n",
   "            \[|||]/\r\n",
-  "             \"---\"\r\n",              
+  "             \"---\"\r\n",
   "\r\n",
   "\r\n",
   "\r\n",
@@ -36,8 +39,8 @@ canvas_landed = [
   "       =================\r\n",
   "     __/ []. \"\"\"\"\" .[] \____\r\n",
   "    / / / < \[|||]/ > \ \   \\\r\n",
-  "   /  \ `    \"---\"    ' /    \\\r\n", 
-  "  /    `:::::::::::::::'      \\\r\n", 
+  "   /  \ `    \"---\"    ' /    \\\r\n",
+  "  /    `:::::::::::::::'      \\\r\n",
   " /_____________________________\\\r\n",
   " |_____________________________| \r\n",
   "\r\n",
@@ -54,7 +57,9 @@ travel = 8
 _ = subprocess.call("clear", shell=True) # On Windows change `clever` to `cls`
 
 print(*canvas)
-input("Press enter to land")
+
+if CI == None:
+   input("Press enter to land")
 
 for i in range(travel):
   if i == 0:
